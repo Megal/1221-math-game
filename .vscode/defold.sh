@@ -4,15 +4,8 @@
 ## General Settings
 ## You should probably change them
 
-# The path to your Defold Editor folder:
-# - MacOS: "/Applications/Defold.app"
-# - Linux: "/usr/bin/Defold"
-# - Windows: "C:/Program Files/Defold"
-defold_editor_path="/home/crews/Apps/Defold"
-
 # Open the output folder after completing the bundle.
 open_bundle_folder=true
-
 
 ##
 ## Optional Bob Settings
@@ -63,6 +56,23 @@ host_os=$2
 target_os=$3
 variant=$4
 project_path="$(pwd)"
+
+# The path to your Defold Editor folder:
+# - MacOS: "/Applications/Defold.app"
+# - Linux: "/usr/bin/Defold"
+# - Windows: "C:/Program Files/Defold"
+case $host_os in
+    "macOS")
+        defold_editor_path="/Applications/Defold.app"
+        ;;
+    "Linux")
+        defold_editor_path="/usr/bin/Defold"
+        ;;
+    "Windows")
+        defold_editor_path="C:/Program Files/Defold"
+        ;;
+    *)  ;;
+esac
 
 # Defold Paths
 defold_recources_path="${defold_editor_path%/}"
