@@ -1789,7 +1789,7 @@ layers {
 }
 layers {
   id: "digits"
-  z: 0.2
+  z: 0.5
   is_visible: 1
   cell {
     x: 9
