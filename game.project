@@ -11,3 +11,6 @@ title = Walking astronaut tutorial
 width = 1280
 height = 768
 
+[physics]
+gravity_y = 0.0
+

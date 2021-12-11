@@ -1,6 +1,6 @@
 components {
-  id: "astronaut"
-  component: "/main/astronaut.script"
+  id: "wall"
+  component: "/main/wall.script"
   position {
     x: 0.0
     y: 0.0
@@ -16,14 +16,14 @@ components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "tile_set: \"/main/astronaut.atlas\"\n"
-  "default_animation: \"idle\"\n"
+  data: "tile_set: \"/main/compiled.tilesource\"\n"
+  "default_animation: \"anim\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
-    x: 32.0
-    y: 32.0
+    x: 0.0
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -37,18 +37,18 @@ embedded_components {
   id: "collisionobject"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_DYNAMIC\n"
-  "mass: 1.0\n"
+  "type: COLLISION_OBJECT_TYPE_KINEMATIC\n"
+  "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
-  "group: \"player\"\n"
-  "mask: \"wall\"\n"
+  "group: \"wall\"\n"
+  "mask: \"player\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
-  "      x: 32.0\n"
-  "      y: 32.0\n"
+  "      x: 0.0\n"
+  "      y: 0.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
