@@ -1,4 +1,4 @@
-name: "tutorial_explain"
+name: "tutorial_explain_world"
 instances {
   id: "astronaut"
   prototype: "/main/tutorial_explain/astronaut.go"
