@@ -1878,14 +1878,14 @@ layers {
   cell {
     x: 10
     y: 8
-    tile: 1
+    tile: 9
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 11
     y: 8
-    tile: 1
+    tile: 9
     h_flip: 0
     v_flip: 0
   }
@@ -1899,14 +1899,14 @@ layers {
   cell {
     x: 10
     y: 9
-    tile: 1
+    tile: 9
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 11
     y: 9
-    tile: 1
+    tile: 9
     h_flip: 0
     v_flip: 0
   }
