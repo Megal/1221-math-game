@@ -1,8 +1,23 @@
+components {
+  id: "door"
+  component: "/main/door/door.script"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "collisionobject"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_STATIC\n"
+  "type: COLLISION_OBJECT_TYPE_KINEMATIC\n"
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
@@ -50,14 +65,14 @@ embedded_components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "tile_set: \"/main/symbol/symbol.atlas\"\n"
-  "default_animation: \"\"\n"
+  data: "tile_set: \"/main/door/door.atlas\"\n"
+  "default_animation: \"door\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
-    x: 0.0
-    y: 0.0
+    x: 32.0
+    y: 32.0
     z: 0.0
   }
   rotation {
