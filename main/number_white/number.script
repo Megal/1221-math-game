@@ -1,0 +1,80 @@
+go.property("value", hash("0"))
+go.property("x", 1024)
+go.property("y", 1024)
+
+local values = {
+	[hash("0")] = "0",
+	[hash("1")] = "1",
+	[hash("2")] = "2",
+	[hash("3")] = "3",
+	[hash("4")] = "4",
+	[hash("5")] = "5",
+	[hash("6")] = "6",
+	[hash("7")] = "7",
+	[hash("8")] = "8",
+	[hash("9")] = "9"
+	
+}
+
+function init(self)
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+	print("number init")
+	if self.value ~= nil then
+		-- All fish are created plain
+		local v = values[self.value]
+		local p = go.get_position()
+		p.x = self.x
+		p.y = self.y
+		p.z = 0.9
+		go.set_position(p)
+		msg.post("#number_sprite", "play_animation", { id = hash("number-" .. v) })
+	else
+		msg.post("#number_sprite", "disable")
+	end
+
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+	-- local speed = 10
+	-- local p = go.get_position()
+	-- p.x = p.x + speed * dt
+	-- if p.x < -32 then
+	-- 	go.delete()
+	-- end
+	-- go.set_position(p)
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
