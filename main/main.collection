@@ -1,7 +1,7 @@
 name: "main"
 instances {
   id: "astronaut"
-  prototype: "/main/astronaut.go"
+  prototype: "/main/player/player.go"
   position {
     x: 405.0
     y: 172.0
@@ -63,7 +63,7 @@ instances {
   id: "detector"
   prototype: "/main/detector/detector.go"
   position {
-    x: 608.0
+    x: 478.0
     y: 352.0
     z: 0.0
   }
@@ -99,11 +99,9 @@ instances {
     z: 1.0
   }
 }
-
-
-instances {
-  id: "tutorial_loader"
-  prototype: "/main/tutorial_loader.go"
+collection_instances {
+  id: "symbol"
+  collection: "/main/symbol/symbol.collection"
   position {
     x: 0.0
     y: 0.0
@@ -121,16 +119,13 @@ instances {
     z: 1.0
   }
 }
-
-
-
 collection_instances {
-  id: "symbol"
-  collection: "/main/symbol/symbol.collection"
+  id: "carrot_set"
+  collection: "/main/tutorial_explain/carrot_set.collection"
   position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    x: 673.0
+    y: 544.0
+    z: 0.9
   }
   rotation {
     x: 0.0

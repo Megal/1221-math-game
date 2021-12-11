@@ -3,9 +3,5 @@ function on_message(self, message_id, message, sender)
 		if message.enter then
 			go.delete(sender)
 		end
-	elseif message_id == hash("collision_response") then
-		if message.enter then
-			go.delete(sender)
-		end
 	end
 end
