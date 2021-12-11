@@ -1,10 +1,11 @@
 local speed = 196
 local max_speed = 19600 * 3.14
-local acceleration_constant = 196 * 32
+local acceleration_constant = 196 * 128
 local half_tile = 32
 local tile_size = half_tile * 2
 local time_min = 0.05
-local time_max = 0.3
+local time_max = 0.2
+local lateral_speed_compensation_time = 0.2
 
 debugger = require('libs.debugger')
 debugger.start()
@@ -34,17 +35,29 @@ function update(self, dt)
         
     -- go.set_position(p + self.dir * step)
     
-
     local current_speed_vec3 = go.get("astronaut#collisionobject", "linear_velocity")
     local current_speed = vmath.length_sqr(current_speed_vec3)
     msg.post("@render:", "draw_text", { text = "speed: " .. current_speed, position = vmath.vector3(64, 64, 0) })
     local frictionK =  (1.0 - current_speed / max_speed)
     local impulseK = math.max(0.0, (1.1 - self.time_remains / time_max))
-    local accel = self.dir * acceleration_constant * frictionK * impulseK
+    local accel = self.dir * acceleration_constant * frictionK * impulseK * impulseK
+
+    -- apply friction to lateral to dir
+    if vmath.length_sqr(current_speed_vec3) > 1e-9 and vmath.length_sqr(self.dir) > 1e-9 then
+        local proj = vmath.project(current_speed_vec3, self.dir) * self.dir
+        local lateral = current_speed_vec3 - proj
+
+        if vmath.length_sqr(lateral) > 0.1 then
+            msg.post("@render:", "draw_text", { text = "lateral: " .. vmath.length_sqr(lateral), position = vmath.vector3(64, 164, 0) }) 
+            local compensation = math.min(1.0, dt / lateral_speed_compensation_time)
+            go.set("astronaut#collisionobject", "linear_velocity", current_speed_vec3 - lateral * compensation)            
+        end
+    end
+    
         
     if self.time_remains > 1e-9 then
         -- msg.post("astronaut#collisionobject", "applied_impulse", { })
-        go.set("astronaut#collisionobject", "linear_damping", 0.98)
+        go.set("astronaut#collisionobject", "linear_damping", 0.95)
         -- go.set("astronaut#collisionobject", "linear_velocity", self.dir * step * speed)
 
         if current_speed > max_speed then
@@ -106,13 +119,13 @@ function on_input(self, action_id, action)
     self.time_remains = time_max
 
     if action_id == hash("front") then
-        self.dir.y = -1
+        self.dir = vmath.vector3(0, -1, 0)
     elseif action_id == hash("back") then
-        self.dir.y = 1
+        self.dir = vmath.vector3(0, 1, 0)
     elseif action_id == hash("left") then
-        self.dir.x = -1
+        self.dir = vmath.vector3(-1, 0, 0)
     elseif action_id == hash("right") then
-        self.dir.x = 1
+        self.dir = vmath.vector3(1, 0, 0)
     end
 end
 
