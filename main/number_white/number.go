@@ -22,7 +22,7 @@ embedded_components {
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
-    x: 33.0
+    x: 32.0
     y: 32.0
     z: 0.0
   }
