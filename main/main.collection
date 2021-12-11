@@ -3,8 +3,8 @@ instances {
   id: "astronaut"
   prototype: "/main/astronaut.go"
   position {
-    x: 611.0
-    y: 258.0
+    x: 405.0
+    y: 172.0
     z: 1.0
   }
   rotation {
@@ -16,26 +16,6 @@ instances {
   scale3 {
     x: 4.0
     y: 4.0
-    z: 1.0
-  }
-}
-instances {
-  id: "wall1"
-  prototype: "/main/wall.go"
-  position {
-    x: 672.0
-    y: 352.0
-    z: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
     z: 1.0
   }
 }
