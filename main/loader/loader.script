@@ -4,7 +4,6 @@ function init(self)
 	-- Remove this function if not needed
 	print("LOADING MAIN")
 	msg.post(".", "acquire_input_focus")
-
 	msg.post("#main_proxy", "load")
 	-- msg.post("#tutorial_proxy", "load")
 end
@@ -13,6 +12,7 @@ function final(self)
 	-- Add finalization code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
+	msg.post(".", "release_input_focus")
 end
 
 function update(self, dt)
@@ -25,10 +25,21 @@ function on_message(self, message_id, message, sender)
 	-- Add message-handling code here
 	-- Learn more: https://defold.com/manuals/message-passing/
 	-- Remove this function if not needed
+
 	-- Proxy loading
+	if message_id  == hash("show_tutorial") then
+		msg.post(".", "acquire_input_focus")
+		show_tutorial()
+	end
+	if message_id  == hash("show_main") then
+		msg.post(".", "acquire_input_focus")
+		show_main()
+	end
+
 	if message_id == hash("proxy_loaded") then
 		-- New world is loaded. Init and enable it.
 		print("PROXY LOADED")
+		pprint(sender)
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
 		-- give focus to character cause it does not work on init
@@ -53,4 +64,16 @@ function on_reload(self)
 	-- Add reload-handling code here
 	-- Learn more: https://defold.com/manuals/hot-reload/
 	-- Remove this function if not needed
+end
+
+function show_tutorial(self)
+	print("SHOWING TUTORIAL")
+	msg.post("#tutorial_proxy", "load")
+	msg.post("#main_proxy", "unload")
+end
+
+function show_main(self)
+	print("SHOWING MAIN")
+	msg.post("#main_proxy", "load")
+	msg.post("#tutorial_proxy", "unload")
 end
