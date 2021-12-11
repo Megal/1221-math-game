@@ -1,11 +1,41 @@
+go.property("value", hash("0"))
+go.property("x", 512)
+go.property("y", 512)
+go.property("row", 0)
+go.property("col", 0)
+
+local values = {
+	[hash("0")] = "0",
+	[hash("1")] = "1",
+	[hash("2")] = "2",
+	[hash("3")] = "3",
+	[hash("4")] = "4",
+	[hash("5")] = "5",
+	[hash("6")] = "6",
+	[hash("7")] = "7",
+	[hash("8")] = "8",
+	[hash("9")] = "9"
+	
+}
+
 function init(self)
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
-	-- local p = go.get_position()
-	-- p.y = vmath.lerp(math.random(), min_y, max_y)
-	-- local factory_component = "#number_factory"
-	-- factory.create(factory_component, p)
+
+	if self.value ~= nil then
+		-- All fish are created plain
+		local v = values[self.value]
+		local p = go.get_position()
+		p.x = self.x
+		p.y = self.y
+		p.z = 1
+		go.set_position(p)
+		msg.post("#number_sprite", "play_animation", { id = hash("number-" .. v) })
+	else
+		msg.post("#number_sprite", "disable")
+	end
+
 end
 
 function final(self)
@@ -18,6 +48,13 @@ function update(self, dt)
 	-- Add update code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
+	-- local speed = 10
+	-- local p = go.get_position()
+	-- p.x = p.x + speed * dt
+	-- if p.x < -32 then
+	-- 	go.delete()
+	-- end
+	-- go.set_position(p)
 end
 
 function on_message(self, message_id, message, sender)
