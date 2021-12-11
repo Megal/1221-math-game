@@ -1,0 +1,12 @@
+function on_message(self, message_id, message, sender)
+	local p = go.get_position()
+	if message_id == hash("open") then
+		p.z = -1
+		go.set_position(p)		
+		msg.post("door#collisionobject", "disable")
+	elseif message_id == hash("close") then
+		p.z = 0.6
+		go.set_position(p)
+		msg.post("door#collisionobject", "enable")
+	end
+end
