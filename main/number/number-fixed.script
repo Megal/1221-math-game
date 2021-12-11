@@ -1,0 +1,57 @@
+function init(self)
+	-- корректирующий вектор
+	self.correction = vmath.vector3()
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- корректирующий вектор
+	self.correction = vmath.vector3()
+end
+
+function on_message(self, message_id, message, sender)
+	-- Обработка столкновения
+	if message_id == hash("contact_point_response") then
+		-- Получить информацию, необходимую для убирания из столкновения. Мы можем
+		-- получить несколько точек соприкосновения и должны вычислить
+		-- как выбраться из всех них накапливая
+		-- корректирующий вектор в этом кадре:
+		print(message.distance)
+		if message.distance < 1e-9 then
+			-- Во-первых, получим проекцию накопленной коррекции на
+			-- вектор проникновения
+			local proj = vmath.project(self.correction, message.normal * message.distance)
+			if proj < 1 then
+				-- Заботимся только о проекциях, которые не выходят за пределы диапазона.
+				local comp = (message.distance - message.distance * proj) * message.normal
+				-- Применяем компенсацию
+				go.set_position(go.get_position() + comp)
+				-- Прибавляем проделанную коррекцию
+				self.correction = self.correction + comp
+			end
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
