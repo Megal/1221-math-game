@@ -1,19 +1,44 @@
 function init(self)
 	print("LOADING MAIN")
 	msg.post(".", "acquire_input_focus")
-
 	msg.post("#main_proxy", "load")
 	-- msg.post("#tutorial_proxy", "load")
 end
 
+function final(self)
+	msg.post(".", "release_input_focus")
+end
+
 function on_message(self, message_id, message, sender)
 	-- Proxy loading
+	if message_id  == hash("show_tutorial") then
+		-- msg.post(".", "acquire_input_focus")
+		show_tutorial()
+	end
+	if message_id  == hash("show_main") then
+		-- msg.post(".", "acquire_input_focus")
+		show_main()
+	end
+
 	if message_id == hash("proxy_loaded") then
 		-- New world is loaded. Init and enable it.
 		print("PROXY LOADED")
+		pprint(sender)
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
 		-- give focus to character cause it does not work on init
 		-- msg.post(".", "release_input_focus")
 	end
+end
+
+function show_tutorial(self)
+	print("SHOWING TUTORIAL")
+	msg.post("#tutorial_proxy", "load")
+	msg.post("#main_proxy", "unload")
+end
+
+function show_main(self)
+	print("SHOWING MAIN")
+	msg.post("#main_proxy", "load")
+	msg.post("#tutorial_proxy", "unload")
 end

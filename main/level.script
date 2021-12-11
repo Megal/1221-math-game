@@ -18,6 +18,11 @@ function init(self)
   table.insert(setNumbers, {x=randomX, y=randomY})
 end
 
+function final(self)
+	msg.post(".", "release_input_focus")
+	
+end
+
 function init_default_random()
   math.randomseed(os.time())
   math.random()
