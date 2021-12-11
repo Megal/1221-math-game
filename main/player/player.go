@@ -1,6 +1,6 @@
 components {
   id: "astronaut"
-  component: "/main/astronaut.script"
+  component: "/main/player/player.script"
   position {
     x: 0.0
     y: 0.0
@@ -45,6 +45,7 @@ embedded_components {
   "mask: \"wall\"\n"
   "mask: \"digit\"\n"
   "mask: \"detector\"\n"
+  "mask: \"carrot\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
