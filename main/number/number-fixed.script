@@ -16,7 +16,13 @@ end
 
 function on_message(self, message_id, message, sender)
 	-- Обработка столкновения
-	if message_id == hash("contact_point_response") then
+	if message_id == hash("trigger_response") and message.enter then
+		if message.enter then
+			msg.post("door", "open")
+		else 
+			msg.post("door", "clode")
+		end
+	elseif message_id == hash("contact_point_response") then
 		-- Получить информацию, необходимую для убирания из столкновения. Мы можем
 		-- получить несколько точек соприкосновения и должны вычислить
 		-- как выбраться из всех них накапливая
