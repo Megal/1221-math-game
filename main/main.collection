@@ -63,7 +63,7 @@ instances {
   id: "detector"
   prototype: "/main/detector/detector.go"
   position {
-    x: 608.0
+    x: 478.0
     y: 352.0
     z: 0.0
   }
