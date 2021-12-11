@@ -6,6 +6,7 @@ function init(self)
     msg.post(".", "acquire_input_focus")
     self.dir = vmath.vector3()
     self.current_anim = nil
+    self.move_delay = 0
 end
 
 function update(self, dt)
@@ -14,6 +15,7 @@ function update(self, dt)
     end
     local p = go.get_position()
     go.set_position(p + self.dir * speed * dt)
+    self.move_delay = self.move_delay - dt
 
     -- animate the astronaut
 
@@ -35,11 +37,14 @@ function update(self, dt)
     end
 
     -- done animating
-    
-    self.dir = vmath.vector3()
+    if self.move_delay <= 0.0 then
+        self.dir = vmath.vector3()
+    end
 end
 
 function on_input(self, action_id, action)
+    if self.move_delay > 0 then return end
+    self.move_delay = 0.4
     if action_id == hash("front") then
         self.dir.y = -1
     elseif action_id == hash("back") then
