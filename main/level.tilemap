@@ -1,4 +1,4 @@
-tile_set: "/main/sandtiles.tilesource"
+tile_set: "/main/compiled.tilesource"
 layers {
   id: "layer1"
   z: 0.0
@@ -1691,294 +1691,362 @@ layers {
   cell {
     x: 1
     y: 1
-    tile: 5
+    tile: 11
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 2
     y: 1
-    tile: 5
+    tile: 11
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 3
     y: 1
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 4
     y: 1
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 5
     y: 1
-    tile: 5
+    tile: 11
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 6
     y: 1
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 10
     y: 1
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 11
     y: 1
-    tile: 5
+    tile: 11
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 14
     y: 1
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 15
     y: 1
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 16
     y: 1
-    tile: 5
+    tile: 11
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 17
     y: 1
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 18
     y: 1
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 1
     y: 2
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 3
     y: 2
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 7
     y: 2
-    tile: 5
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 12
     y: 2
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 18
     y: 2
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 18
     y: 3
-    tile: 5
+    tile: 11
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 1
     y: 4
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 17
     y: 4
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 1
     y: 5
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 18
     y: 5
-    tile: 5
+    tile: 11
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 2
     y: 6
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 18
     y: 6
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 4
     y: 7
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 18
     y: 7
-    tile: 5
+    tile: 11
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 1
     y: 8
-    tile: 5
+    tile: 11
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 2
     y: 8
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 15
     y: 8
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 17
     y: 8
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 1
     y: 9
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 6
     y: 9
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 9
     y: 9
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 3
     y: 10
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 7
     y: 10
-    tile: 5
+    tile: 11
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 8
     y: 10
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 10
     y: 10
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 11
     y: 10
-    tile: 5
+    tile: 11
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 12
     y: 10
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 17
     y: 10
-    tile: 4
+    tile: 10
     h_flip: 0
     v_flip: 0
   }
   cell {
     x: 18
     y: 10
-    tile: 5
+    tile: 11
+    h_flip: 0
+    v_flip: 0
+  }
+}
+layers {
+  id: "digits"
+  z: 0.2
+  is_visible: 1
+  cell {
+    x: 8
+    y: 4
+    tile: 25
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 9
+    y: 4
+    tile: 24
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 3
+    y: 5
+    tile: 22
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 4
+    y: 5
+    tile: 17
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 5
+    y: 5
+    tile: 22
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 6
+    y: 5
+    tile: 18
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 8
+    y: 6
+    tile: 22
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 10
+    y: 6
+    tile: 26
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 12
+    y: 7
+    tile: 23
     h_flip: 0
     v_flip: 0
   }
