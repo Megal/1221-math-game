@@ -1,4 +1,4 @@
-name: "tutorial_explain"
+name: "tutorial_explain_world"
 instances {
   id: "astronaut"
   prototype: "/main/tutorial_explain/astronaut.go"
@@ -26,6 +26,26 @@ instances {
     x: 256.0
     y: 448.0
     z: 0.9
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "loader"
+  prototype: "/main/tutorial_explain/loader/loader.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
   }
   rotation {
     x: 0.0

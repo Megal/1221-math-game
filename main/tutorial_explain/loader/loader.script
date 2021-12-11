@@ -2,6 +2,10 @@ function init(self)
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
+
+	-- msg.post("tutorial_explain_world#main_proxy", "disable")
+	-- msg.post("tutorial_explain_world#main_proxy", "final")
+	-- msg.post("tutorial_explain_world#main_proxy", "unload")
 end
 
 function final(self)
