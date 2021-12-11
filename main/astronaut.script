@@ -1,7 +1,9 @@
 local speed = 196
-local acceleration_constant = 1960000000000
+local max_speed = 19600 * 3.14
+local acceleration_constant = 196 * 32
 local half_tile = 32
 local tile_size = half_tile * 2
+local time_max = 0.3
 
 debugger = require('libs.debugger')
 debugger.start()
@@ -31,18 +33,27 @@ function update(self, dt)
         
     -- go.set_position(p + self.dir * step)
     
-    local accel = self.dir * acceleration_constant
-    pprint("accel", accel)
-    pprint("step = " .. step)
-    pprint(nearest_tile_center(p))
 
+    local current_speed_vec3 = go.get("astronaut#collisionobject", "linear_velocity")
+    local current_speed = vmath.length_sqr(current_speed_vec3)
+    msg.post("@render:", "draw_text", { text = "speed: " .. current_speed, position = vmath.vector3(64, 64, 0) })
+    local frictionK =  (1.0 - current_speed / max_speed)
+    local impulseK = math.max(0.0, (1.0 - self.time_remains / time_max))
+    local accel = self.dir * acceleration_constant * frictionK * impulseK
+        
     if self.time_remains > 1e-9 then
         -- msg.post("astronaut#collisionobject", "applied_impulse", { })
-        -- go.set("astronaut#collisionobject", "linear_damping", 0.0)
+        go.set("astronaut#collisionobject", "linear_damping", 0.95)
         -- go.set("astronaut#collisionobject", "linear_velocity", self.dir * step * speed)
-        msg.post("astronaut#collisionobject", "apply_force", { force = accel, position = p })
+
+        if current_speed > max_speed then
+            pprint("reached max speed")
+            msg.post("@render:", "draw_text", { text = "eached max speed" .. current_speed, position = vmath.vector3(64, 264, 0) })
+        else
+            msg.post("astronaut#collisionobject", "apply_force", { force = accel, position = p })
+        end
     else
-        go.set("astronaut#collisionobject", "linear_damping", 0.99)
+        go.set("astronaut#collisionobject", "linear_damping", 1)
         local changeVector = nearest_tile_center(p) - p
         local changeVectorNormilizedAndScaled = normExceed( changeVector ) * speed * dt
         if vmath.length_sqr(changeVectorNormilizedAndScaled) <  vmath.length_sqr(changeVector) then
@@ -84,10 +95,14 @@ function update(self, dt)
 end
 
 function on_input(self, action_id, action)
+    if action_id == hash("debug") and action.released then
+        msg.post("@system:", "toggle_physics_debug")
+    end
+    
     -- if self.move_remains > 1e-9 then return end
     -- self.move_remains = tile_size
     if self.time_remains > 1e-9 then return end
-    self.time_remains = 0.4
+    self.time_remains = time_max
 
     if action_id == hash("front") then
         self.dir.y = -1
