@@ -110,7 +110,6 @@ function update(self, dt)
 end
 
 function on_input(self, action_id, action)
-    print("MAIN ON INPUT")
     if action_id == hash("debug") and action.released then
         msg.post("@system:", "toggle_physics_debug")
     end
