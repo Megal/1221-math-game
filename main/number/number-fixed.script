@@ -20,7 +20,7 @@ function on_message(self, message_id, message, sender)
 		if message.enter then
 			msg.post("door", "open")
 		else 
-			msg.post("door", "clode")
+			msg.post("door", "close")
 		end
 	elseif message_id == hash("contact_point_response") then
 		-- Получить информацию, необходимую для убирания из столкновения. Мы можем
