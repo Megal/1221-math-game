@@ -6,9 +6,9 @@ function init(self)
 
 
 	local p = go.get_position()
-	p.x = self.x
-	p.y = self.y
-	p.z = 0.9
+	-- p.x = self.x
+	-- p.y = self.y
+	 --p.z = 0.9
 	go.set_position(p)
 	msg.post("#sprite", "play_animation", { id = hash("multiply") })
 end
