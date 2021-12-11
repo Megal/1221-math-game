@@ -17,11 +17,13 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("trigger_response") then -- <2>
-		if message.enter then -- <3>
-			msg.post("#sprite", "disable") -- <4>
-		else
-			msg.post("#sprite", "enable") -- <5>
+	if message_id == hash("trigger_response") then
+		if message.enter then
+			go.delete(sender)
+		end
+	elseif message_id == hash("collision_response") then
+		if message.enter then
+			go.delete(sender)
 		end
 	end
 end
