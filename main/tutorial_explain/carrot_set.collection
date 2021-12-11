@@ -1,4 +1,4 @@
-name: "default"
+name: "carrot_collection"
 instances {
   id: "carrot1"
   prototype: "/main/carrot/carrot.go"

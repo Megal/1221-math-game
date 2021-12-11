@@ -1,3 +1,6 @@
+local speed = 196
+
+
 function init(self)
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
@@ -18,6 +21,17 @@ function update(self, dt)
 	-- Add update code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
+
+	local dir = vmath.vector3(0, -1, 0)
+	local p = go.get_position()
+
+	local door_url = ".tutorial_door"
+	pprint(p)
+	if p.x > 256 or p.y > 384 then
+		local step = speed * dt
+		go.set_position(p + dir * step)
+	end
+
 end
 
 function on_message(self, message_id, message, sender)

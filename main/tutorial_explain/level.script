@@ -2,10 +2,8 @@ function init(self)
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
-
-	-- msg.post("tutorial_explain_world#main_proxy", "disable")
-	-- msg.post("tutorial_explain_world#main_proxy", "final")
-	-- msg.post("tutorial_explain_world#main_proxy", "unload")
+	print("INIT TUTORIAL LEVEL")
+	disable_carrots()
 end
 
 function final(self)
@@ -30,6 +28,8 @@ function on_input(self, action_id, action)
 	-- Add input-handling code here. The game object this script is attached to
 	-- must have acquired input focus:
 	--
+	--    msg.post(".", "acquire_input_focus")
+	--
 	-- All mapped input bindings will be received. Mouse and touch input will
 	-- be received regardless of where on the screen it happened.
 	-- Learn more: https://defold.com/manuals/input/
@@ -40,4 +40,17 @@ function on_reload(self)
 	-- Add reload-handling code here
 	-- Learn more: https://defold.com/manuals/hot-reload/
 	-- Remove this function if not needed
+end
+
+function disable_carrots(self)
+	-- msg.post("/carrot_set/carrot1#sprite", "disable")
+	-- msg.post("/carrot_set/carrot2#sprite", "disable")
+	-- msg.post("/carrot_set/carrot3#sprite", "disable")
+	-- msg.post("/carrot_set/carrot4#sprite", "disable")
+	msg.post("/carrot_set/carrot1", "disable")
+	msg.post("/carrot_set/carrot2", "disable")
+	msg.post("/carrot_set/carrot3", "disable")
+	msg.post("/carrot_set/carrot4", "disable")
+	
+	
 end
