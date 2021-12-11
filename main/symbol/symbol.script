@@ -1,25 +1,16 @@
-setNumbers = {}
 
 function init(self)
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
-  init_default_random()
-	print("level init")
+
+
 	local p = go.get_position()
-	p.x = 256
-	p.y = 256
-	p.z =  0.9
-
---	local component = "#symbol_factory"
---	factory.create(component, p)
-
-	local component = "#number_factory"
-  local randomX = math.random(1, 70)
-  local randomY = math.random(1, 70)
-	factory.create(component, p, null, { x=randomX, y=randomY, value = hash("2") })
-  table.insert(setNumbers, {x=randomX, y=randomY})
-  print(setNumbers[1].x, setNumbers[1].y)
+	p.x = self.x
+	p.y = self.y
+	p.z = 0.9
+	go.set_position(p)
+	msg.post("#sprite", "play_animation", { id = hash("multiply") })
 end
 
 function final(self)
@@ -56,11 +47,4 @@ function on_reload(self)
 	-- Add reload-handling code here
 	-- Learn more: https://defold.com/manuals/hot-reload/
 	-- Remove this function if not needed
-end
-
-function init_default_random()
-  math.randomseed(os.time())
-  math.random()
-  math.random()
-  math.random()
 end
