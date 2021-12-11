@@ -10,6 +10,7 @@ debugger = require('libs.debugger')
 debugger.start()
 
 function init(self)
+    print("INIT MAIN ASTRONAUT")
     msg.post(".", "acquire_input_focus")
     self.dir = vmath.vector3()
     self.current_anim = nil
@@ -96,8 +97,20 @@ function update(self, dt)
 end
 
 function on_input(self, action_id, action)
+    print("MAIN ON INPUT")
     if action_id == hash("debug") and action.released then
         msg.post("@system:", "toggle_physics_debug")
+    end
+
+    if action_id == hash("tutorial") then
+        if action.pressed then
+            -- start moving left
+            print("LOADING TUTORIAL")
+            msg.post("loader#tutorial_proxy", "load")
+
+        elseif action.released then
+            -- stop moving left
+        end
     end
     
     -- if self.move_remains > 1e-9 then return end
@@ -123,7 +136,7 @@ function nearest_tile_center(position)
     return vmath.vector3(snapX, snapY, position.z)
 end
 
-function on_message(self, message_id, message)
+function on_message(self, message_id, message, sender)
     if message_id == hash("collision_response") then
         -- take action
         pprint("I collided with" .. message.other_group)
