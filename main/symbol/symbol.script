@@ -1,14 +1,16 @@
+
 function init(self)
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
-	print("level init")
+
+
 	local p = go.get_position()
-	p.x = 256
-	p.y = 256
-	p.z =  0.9
-	local component = "#symbol_factory"
-	factory.create(component, p)
+	p.x = self.x
+	p.y = self.y
+	p.z = 0.9
+	go.set_position(p)
+	msg.post("#sprite", "play_animation", { id = hash("multiply") })
 end
 
 function final(self)
