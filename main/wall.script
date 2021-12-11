@@ -1,8 +1,32 @@
+function init(self)
+  -- корректирующий вектор
+  self.correction = vmath.vector3()
+end
+
+function update(self, dt)
+  -- сброс корректирующего вектора
+  self.correction = vmath.vector3()
+end
+
 function on_message(self, message_id, message, sender)
-	pprint(message)
-	-- Handle collision
-	if message_id == hash("contact_point_response") then
-		local newpos = go.get_position() + message.normal * message.distance
-		go.set_position(newpos)
-	end
+  -- Обработка столкновения
+  if message_id == hash("contact_point_response") then
+    -- Получить информацию, необходимую для убирания из столкновения. Мы можем
+    -- получить несколько точек соприкосновения и должны вычислить
+    -- как выбраться из всех них накапливая
+    -- корректирующий вектор в этом кадре:
+    if message.distance > 0 then
+      -- Во-первых, получим проекцию накопленной коррекции на
+      -- вектор проникновения
+      local proj = vmath.project(self.correction, message.normal * message.distance)
+      if proj < 1 then
+        -- Заботимся только о проекциях, которые не выходят за пределы диапазона.
+        local comp = (message.distance - message.distance * proj) * message.normal
+        -- Применяем компенсацию
+        go.set_position(go.get_position() + comp)
+        -- Прибавляем проделанную коррекцию
+        self.correction = self.correction + comp
+      end
+    end
+  end
 end
