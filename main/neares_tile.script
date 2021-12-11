@@ -1,8 +1,0 @@
-local speed = 196
-local tile_size = 64
-nearest_tile_center = function(position)
-	local reminderX = position.x - math.fmod(position.x, tile_size) + tile_size * 0.5
-	local reminderY = position.y - math.fmod(position.y, tile_size) + tile_size * 0.5
-
-	return { x = reminderX, y = reminderY, z = position.z }
-end

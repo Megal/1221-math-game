@@ -23,8 +23,8 @@ instances {
   id: "number"
   prototype: "/main/number/number.go"
   position {
-    x: 224.0
-    y: 416.0
+    x: 339.0
+    y: 174.0
     z: 1.0
   }
   rotation {
@@ -122,6 +122,7 @@ embedded_instances {
   "restitution: 0.5\\n"
   "group: \\\"\\\"\\n"
   "mask: \\\"player\\\"\\n"
+  "mask: \\\"digit\\\"\\n"
   "linear_damping: 0.0\\n"
   "angular_damping: 0.0\\n"
   "locked_rotation: false\\n"

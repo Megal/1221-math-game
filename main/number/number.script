@@ -56,21 +56,21 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
-end
-
-function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
+	if message_id == hash("contact_point_response") then
+		if message.distance > 0 then
+			-- Во-первых, получим проекцию накопленной коррекции на
+			-- вектор проникновения
+			local proj = vmath.project(self.correction, message.normal * message.distance)
+			if proj < 1 then
+				-- Заботимся только о проекциях, которые не выходят за пределы диапазона.
+				local comp = (message.distance - message.distance * proj) * message.normal
+				-- Применяем компенсацию
+				go.set_position(go.get_position() + comp)
+				-- Прибавляем проделанную коррекцию
+				self.correction = self.correction + comp
+			end
+		end
+	end
 end
 
 function on_reload(self)
