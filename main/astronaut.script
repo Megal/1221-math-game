@@ -3,6 +3,7 @@ local max_speed = 19600 * 3.14
 local acceleration_constant = 196 * 32
 local half_tile = 32
 local tile_size = half_tile * 2
+local time_min = 0.05
 local time_max = 0.3
 
 debugger = require('libs.debugger')
@@ -38,12 +39,12 @@ function update(self, dt)
     local current_speed = vmath.length_sqr(current_speed_vec3)
     msg.post("@render:", "draw_text", { text = "speed: " .. current_speed, position = vmath.vector3(64, 64, 0) })
     local frictionK =  (1.0 - current_speed / max_speed)
-    local impulseK = math.max(0.0, (1.0 - self.time_remains / time_max))
+    local impulseK = math.max(0.0, (1.1 - self.time_remains / time_max))
     local accel = self.dir * acceleration_constant * frictionK * impulseK
         
     if self.time_remains > 1e-9 then
         -- msg.post("astronaut#collisionobject", "applied_impulse", { })
-        go.set("astronaut#collisionobject", "linear_damping", 0.95)
+        go.set("astronaut#collisionobject", "linear_damping", 0.98)
         -- go.set("astronaut#collisionobject", "linear_velocity", self.dir * step * speed)
 
         if current_speed > max_speed then
@@ -101,7 +102,7 @@ function on_input(self, action_id, action)
     
     -- if self.move_remains > 1e-9 then return end
     -- self.move_remains = tile_size
-    if self.time_remains > 1e-9 then return end
+    if self.time_remains > time_min then return end
     self.time_remains = time_max
 
     if action_id == hash("front") then
