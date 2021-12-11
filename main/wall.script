@@ -1,8 +1,7 @@
 function on_message(self, message_id, message, sender)
-	pprint(message)
 	-- Handle collision
 	if message_id == hash("contact_point_response") then
 		local newpos = go.get_position() + message.normal * message.distance
-		go.set_position(newpos)
+		-- go.set_position(newpos)
 	end
 end

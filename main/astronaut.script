@@ -17,9 +17,16 @@ function update(self, dt)
     local p = go.get_position()
     local step = math.min(speed * dt, self.move_remains)
     
-    go.set_position(p + self.dir * step)
-    self.move_remains = self.move_remains - step
+    -- go.set_position(p + self.dir * step)
+    
+    local accel = self.dir * step * speed
+    pprint("acceleration = " .. accel)
+    pprint("step = " .. step)
 
+    -- local existingForce = go.get("astronaut#collisionobject")
+    msg.post("astronaut#collisionobject", "apply_force", { force = accel, position = p })
+    self.move_remains = self.move_remains - step
+    
     -- animate the astronaut
 
     local anim = hash("idle")
