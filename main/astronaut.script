@@ -1,5 +1,6 @@
 local speed = 196
 local tile_size = 64
+local next_move_threshold = 16
 debugger = require('libs.debugger')
 debugger.start()
 
@@ -8,6 +9,7 @@ function init(self)
     self.dir = vmath.vector3()
     self.current_anim = nil
     self.move_remains = 0
+    self.next_action_id = hash("none")
 end
 
 function update(self, dt)
@@ -43,13 +45,33 @@ function update(self, dt)
     if self.move_remains < 1e-9 then
         self.dir = vmath.vector3()
         pprint(go.get_position())
+        set_next_move_if_needed(self)
     end
 end
 
-function on_input(self, action_id, action)
-    if self.move_remains > 1e-9 then return end
-    self.move_remains = tile_size
+function set_next_move_if_needed(self)
+    if self.next_action_id == hash("none") then return end
 
+    pprint(self.next_action_id)
+    self.move_remains = self.move_remains + tile_size
+    set_move(self, self.next_action_id)
+    self.next_action_id = hash("none")
+end
+
+function on_input(self, action_id, action)
+    if self.move_remains > next_move_threshold then 
+        return
+    elseif self.move_remains > 1e-9 then 
+        self.next_action_id = action_id
+    else
+        self.next_action_id = hash("none")        
+        self.move_remains = self.move_remains + tile_size
+        set_move(self, action_id)
+        pprint(action)
+    end
+end
+
+function set_move(self, action_id)
     if action_id == hash("front") then
         self.dir.y = -1
     elseif action_id == hash("back") then
