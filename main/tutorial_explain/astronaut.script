@@ -1,115 +1,41 @@
-local speed = 196
-local acceleration_constant = 1960000000000
-local half_tile = 32
-local tile_size = half_tile * 2
-
-debugger = require('libs.debugger')
-debugger.start()
-
 function init(self)
-    msg.post(".", "acquire_input_focus")
-    self.dir = vmath.vector3()
-    self.current_anim = nil
-    self.move_remains = 0
-    self.time_remains = 0
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
 end
 
-function normExceed(vec) 
-    if vmath.length_sqr(vec) > 1 then
-        return vmath.normalize(vec)
-    else 
-        return vec
-    end
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
 end
 
 function update(self, dt)
-    self.dir = normExceed(self.dir)
-    local p = go.get_position()
-    local step = math.min(speed * dt, self.move_remains)
-    self.move_remains = self.move_remains - step
-    self.time_remains = self.time_remains - dt
-        
-    -- go.set_position(p + self.dir * step)
-    
-    local accel = self.dir * acceleration_constant
-    pprint("accel", accel)
-    pprint("step = " .. step)
-    pprint(nearest_tile_center(p))
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
 
-    if self.time_remains > 1e-9 then
-        -- msg.post("astronaut#collisionobject", "applied_impulse", { })
-        -- go.set("astronaut#collisionobject", "linear_damping", 0.0)
-        -- go.set("astronaut#collisionobject", "linear_velocity", self.dir * step * speed)
-        msg.post("astronaut#collisionobject", "apply_force", { force = accel, position = p })
-    else
-        go.set("astronaut#collisionobject", "linear_damping", 0.99)
-        local changeVector = nearest_tile_center(p) - p
-        local changeVectorNormilizedAndScaled = normExceed( changeVector ) * speed * dt
-        if vmath.length_sqr(changeVectorNormilizedAndScaled) <  vmath.length_sqr(changeVector) then
-            -- animate snap
-            go.set_position(p + changeVectorNormilizedAndScaled)
-        else
-            -- set to snapXY if close enough
-            go.set_position(nearest_tile_center(p))
-        end
-
-    end
-    
-    -- animate the astronaut
-
-    local anim = hash("idle")
-
-    if self.dir.x > 0 then
-        anim = hash("right")
-    elseif self.dir.x < 0 then
-        anim = hash("left")
-    elseif self.dir.y > 0 then
-        anim = hash("back")
-    elseif self.dir.y < 0 then
-        anim = hash("front")
-    end
-
-    if anim ~= self.current_anim then
-        msg.post("#sprite", "play_animation", { id = anim })
-        self.current_anim = anim
-    end
-
-    -- done animating
-    -- if self.move_remains < 1e-9 then
-    --     self.dir = vmath.vector3()
-    -- end
-    if self.time_remains < 1e-9 then
-        self.dir = vmath.vector3()
-    end
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
 end
 
 function on_input(self, action_id, action)
-    -- if self.move_remains > 1e-9 then return end
-    -- self.move_remains = tile_size
-    if self.time_remains > 1e-9 then return end
-    self.time_remains = 0.4
-
-    if action_id == hash("front") then
-        self.dir.y = -1
-    elseif action_id == hash("back") then
-        self.dir.y = 1
-    elseif action_id == hash("left") then
-        self.dir.x = -1
-    elseif action_id == hash("right") then
-        self.dir.x = 1
-    end
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
 end
 
-function nearest_tile_center(position)
-    local snapX = position.x - math.fmod(position.x, tile_size) + half_tile
-    local snapY = position.y - math.fmod(position.y, tile_size) + half_tile
-
-    return vmath.vector3(snapX, snapY, position.z)
-end
-
-function on_message(self, message_id, message)
-    if message_id == hash("collision_response") then
-        -- take action
-        pprint("I collided with" .. message.other_group)
-    end
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
 end
