@@ -19,7 +19,6 @@ function init(self)
   local randomY = math.random(1, 70)
 	-- factory.create(component, p, null, { x=randomX, y=randomY, value = hash("2") })
   table.insert(setNumbers, {x=randomX, y=randomY})
-  print(setNumbers[1].x, setNumbers[1].y)
 end
 
 function final(self)

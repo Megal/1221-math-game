@@ -61,10 +61,7 @@ function update(self, dt)
         go.set("astronaut#collisionobject", "linear_damping", 0.95)
         -- go.set("astronaut#collisionobject", "linear_velocity", self.dir * step * speed)
 
-        if current_speed > max_speed then
-            pprint("reached max speed")
-            msg.post("@render:", "draw_text", { text = "eached max speed" .. current_speed, position = vmath.vector3(64, 264, 0) })
-        else
+        if current_speed < max_speed then
             msg.post("astronaut#collisionobject", "apply_force", { force = accel, position = p })
         end
     else

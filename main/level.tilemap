@@ -1752,6 +1752,20 @@ layers {
     v_flip: 0
   }
   cell {
+    x: 10
+    y: 8
+    tile: 83
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 11
+    y: 8
+    tile: 83
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
     x: 8
     y: 9
     tile: 0
@@ -1759,9 +1773,23 @@ layers {
     v_flip: 0
   }
   cell {
+    x: 10
+    y: 9
+    tile: 83
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 11
+    y: 9
+    tile: 83
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
     x: 8
     y: 10
-    tile: 0
+    tile: 83
     h_flip: 0
     v_flip: 0
   }
