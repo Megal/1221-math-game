@@ -5,9 +5,6 @@ function init(self)
 	self.loaded = "#main_proxy"
 	
 	msg.post("/menu", "disable")
-	self.is_showing_tutorial = false
-	self.is_showing_main = true
-	-- msg.post("#tutorial_proxy", "load")
 	sound.play("go#sound", {delay = 1, gain = 0.5, pan = 0.0, speed = 1.0})
 end
 
@@ -16,7 +13,9 @@ function final(self)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("next_level") then
+	if message_id == hash("reload_page") then
+		reload_page(self)
+	elseif message_id == hash("next_level") then
 		show_next(self)
 	elseif message_id  == hash("show_tutorial") then
 		-- msg.post(".", "acquire_input_focus")
@@ -33,6 +32,11 @@ function on_message(self, message_id, message, sender)
 		-- give focus to character cause it does not work on init
 		-- msg.post(".", "release_input_focus")
 	end
+end
+
+function reload_page(self)
+	msg.post(self.loaded, "unload")
+	msg.post(self.loaded, "load")
 end
 
 function show_by_name(self, level)
