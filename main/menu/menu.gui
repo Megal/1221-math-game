@@ -399,7 +399,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "menu_gui/blue_button12"
-  id: "box"
+  id: "exit"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -473,7 +473,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "box"
+  parent: "exit"
   layer: ""
   inherit_alpha: true
   alpha: 1.0

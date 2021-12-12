@@ -6,6 +6,7 @@ function init(self)
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
 	self.digit_ok = false
+	self.waiting_time = 0
 end
 
 function final(self)
@@ -51,19 +52,23 @@ function on_reload(self)
 end
 
 function move_digit(self, dt)
-	local dir = vmath.vector3(0, -1, 0)
-	local player_p = go.get_position("astronaut")
-	local digit_p = go.get_position("number_2")
+	if self.waiting_time > 3 then
+		local dir = vmath.vector3(0, -1, 0)
+		local player_p = go.get_position("astronaut")
+		local digit_p = go.get_position("number_2")
 
-	if player_p.y > 384 then
-		local step = speed * dt
-		go.set_position(player_p + dir * step, "astronaut")
-	end
-	if digit_p.y > 320 then
-		local step = speed * dt
-		go.set_position(digit_p + dir * step, "number_2")
+		if player_p.y > 384 then
+			local step = speed * dt
+			go.set_position(player_p + dir * step, "astronaut")
+		end
+		if digit_p.y > 320 then
+			local step = speed * dt
+			go.set_position(digit_p + dir * step, "number_2")
+		else
+			self.digit_ok = true
+		end
 	else
-		self.digit_ok = true
+		self.waiting_time = self.waiting_time + dt
 	end
 end
 
