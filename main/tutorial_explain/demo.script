@@ -5,8 +5,10 @@ function init(self)
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
+	msg.post("woosh", "disable")
 	self.digit_ok = false
 	self.waiting_time = 0
+	self.woosh_life = 0
 end
 
 function final(self)
@@ -23,7 +25,7 @@ function update(self, dt)
 	move_digit(self, dt)
 	if self.digit_ok then
 		msg.post("level", "disable_door")
-		
+		self.woosh_life = self.woosh_life + dt
 	end
 end
 
@@ -66,9 +68,13 @@ function move_digit(self, dt)
 			go.set_position(digit_p + dir * step, "number_2")
 		else
 			self.digit_ok = true
+			msg.post("woosh", "enable")
 		end
 	else
 		self.waiting_time = self.waiting_time + dt
+	end
+	if self.woosh_life > 0.4 then
+		msg.post("woosh", "disable")
 	end
 end
 
