@@ -2,6 +2,8 @@ function init(self)
 	print("LOADING MAIN")
 	msg.post(".", "acquire_input_focus")
 	msg.post("#main_proxy", "load")
+	self.loaded = "#main_proxy"
+	
 	-- msg.post("#tutorial_proxy", "load")
 	sound.play("go#sound", {delay = 1, gain = 0.5, pan = 0.0, speed = 1.0})
 end
@@ -11,17 +13,15 @@ function final(self)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Proxy loading
-	if message_id  == hash("show_tutorial") then
+	if message_id == hash("next_level") then
+		show_next(self)
+	elseif message_id  == hash("show_tutorial") then
 		-- msg.post(".", "acquire_input_focus")
-		show_tutorial()
-	end
-	if message_id  == hash("show_main") then
+		show_tutorial(self)
+	elseif message_id  == hash("show_main") then
 		-- msg.post(".", "acquire_input_focus")
-		show_main()
-	end
-
-	if message_id == hash("proxy_loaded") then
+		show_main(self)
+	elseif message_id == hash("proxy_loaded") then
 		-- New world is loaded. Init and enable it.
 		print("PROXY LOADED")
 		pprint(sender)
@@ -32,14 +32,33 @@ function on_message(self, message_id, message, sender)
 	end
 end
 
+function show_by_name(self, level)
+	if level == self.loaded then return end
+	msg.post(level, "load")
+	msg.post(self.loaded, "unload")
+	self.loaded = level
+end
+
 function show_tutorial(self)
 	print("SHOWING TUTORIAL")
-	msg.post("#tutorial_proxy", "load")
-	msg.post("#main_proxy", "unload")
+	show_by_name(self, "#tutorial_proxy")
 end
 
 function show_main(self)
 	print("SHOWING MAIN")
-	msg.post("#main_proxy", "load")
-	msg.post("#tutorial_proxy", "unload")
+	show_by_name(self, "#main_proxy")
+end
+
+function show_main_level_2(self)
+	print("SHOWING MAIN LEVEL 2")
+	show_by_name(self, "#main_proxy_level_2")
+end
+
+function show_next(self)
+	print("SHOWING NEXT")
+	if self.loaded ~= "#main_proxy" then
+		show_by_name(self, "#main_proxy")
+	else
+		show_by_name(self, "#main_proxy_level_2")
+	end
 end

@@ -180,3 +180,7 @@ function on_message(self, message_id, message, sender)
 --         
 --     end
 end
+
+function next_level(self) 
+    msg.post("loader:/loader", "next_level")
+end

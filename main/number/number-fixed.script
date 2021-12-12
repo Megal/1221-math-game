@@ -1,6 +1,7 @@
 function init(self)
 	-- корректирующий вектор
 	self.correction = vmath.vector3()
+	print(msg.url())
 end
 
 function update(self, dt)
@@ -9,7 +10,9 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("trigger_response") then
+	if message_id == hash("set_number") then
+		msg.post("#number_sprite", "play_animation", { id = hash("number_" .. message.number) })				
+	elseif message_id == hash("trigger_response") then
 		if message.enter then
 			msg.post("door", "open")
 		else
@@ -21,7 +24,7 @@ function on_message(self, message_id, message, sender)
 		-- получить несколько точек соприкосновения и должны вычислить
 		-- как выбраться из всех них накапливая
 		-- корректирующий вектор в этом кадре:
-		if message.distance < 1e-9 and message.distance ~= nil then
+		if message.distance < 1e-9 and vmath.length_sqr(message.normal) > 1e-9 then
 			-- Во-первых, получим проекцию накопленной коррекции на
 			-- вектор проникновения
 			local proj = vmath.project(self.correction, message.normal * message.distance)
