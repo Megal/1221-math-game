@@ -3,7 +3,7 @@ function init(self)
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
 	print("INIT TUTORIAL LEVEL")
-	disable_carrots()
+	-- disable_carrots()
 	
 end
 
