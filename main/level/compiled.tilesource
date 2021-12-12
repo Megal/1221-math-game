@@ -1,9 +1,9 @@
-image: "/assets/compiled_2.png"
+image: "/assets/compiled_3.png"
 tile_width: 64
 tile_height: 64
 tile_margin: 0
 tile_spacing: 0
-collision: "/assets/compiled_2.png"
+collision: "/assets/compiled_3.png"
 material_tag: "tile"
 convex_hulls {
   index: 0
@@ -28,7 +28,7 @@ convex_hulls {
 convex_hulls {
   index: 16
   count: 4
-  collision_group: "wall"
+  collision_group: "default"
 }
 convex_hulls {
   index: 20
@@ -53,7 +53,7 @@ convex_hulls {
 convex_hulls {
   index: 52
   count: 8
-  collision_group: "wall"
+  collision_group: "default"
 }
 convex_hulls {
   index: 60
@@ -103,7 +103,7 @@ convex_hulls {
 convex_hulls {
   index: 116
   count: 12
-  collision_group: "wall"
+  collision_group: "default"
 }
 convex_hulls {
   index: 128
@@ -433,7 +433,7 @@ convex_hulls {
 convex_hulls {
   index: 613
   count: 0
-  collision_group: ""
+  collision_group: "default"
 }
 convex_hulls {
   index: 613
@@ -452,6 +452,56 @@ convex_hulls {
 }
 convex_hulls {
   index: 613
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 613
+  count: 8
+  collision_group: ""
+}
+convex_hulls {
+  index: 621
+  count: 8
+  collision_group: ""
+}
+convex_hulls {
+  index: 629
+  count: 4
+  collision_group: ""
+}
+convex_hulls {
+  index: 633
+  count: 4
+  collision_group: ""
+}
+convex_hulls {
+  index: 637
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 637
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 637
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 637
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 637
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 637
   count: 0
   collision_group: ""
 }
@@ -462,6 +512,24 @@ animations {
   start_tile: 1
   end_tile: 1
   playback: PLAYBACK_NONE
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "equation_bg"
+  start_tile: 91
+  end_tile: 91
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "filling_spot"
+  start_tile: 92
+  end_tile: 92
+  playback: PLAYBACK_ONCE_FORWARD
   fps: 30
   flip_horizontal: 0
   flip_vertical: 0

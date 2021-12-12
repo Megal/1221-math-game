@@ -1,4 +1,4 @@
-tile_set: "/main/compiled.tilesource"
+tile_set: "/main/level/compiled.tilesource"
 layers {
   id: "layer1"
   z: 0.0
@@ -1834,30 +1834,37 @@ layers {
     v_flip: 0
   }
   cell {
-    x: 3
+    x: 2
     y: 5
     tile: 22
     h_flip: 0
     v_flip: 0
   }
   cell {
-    x: 4
+    x: 3
     y: 5
     tile: 17
     h_flip: 0
     v_flip: 0
   }
   cell {
-    x: 5
+    x: 4
     y: 5
     tile: 22
     h_flip: 0
     v_flip: 0
   }
   cell {
-    x: 6
+    x: 5
     y: 5
     tile: 18
+    h_flip: 0
+    v_flip: 0
+  }
+  cell {
+    x: 6
+    y: 5
+    tile: 12
     h_flip: 0
     v_flip: 0
   }

@@ -63,7 +63,7 @@ instances {
   id: "detector"
   prototype: "/main/detector/detector.go"
   position {
-    x: 478.0
+    x: 416.0
     y: 352.0
     z: 0.0
   }
@@ -139,12 +139,32 @@ collection_instances {
     z: 1.0
   }
 }
+collection_instances {
+  id: "equation"
+  collection: "/main/equation/equation.collection"
+  position {
+    x: 128.0
+    y: 320.0
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "level"
   data: "components {\n"
   "  id: \"level\"\n"
-  "  component: \"/main/level.tilemap\"\n"
+  "  component: \"/main/level/level.tilemap\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -159,7 +179,7 @@ embedded_instances {
   "}\n"
   "components {\n"
   "  id: \"level_script\"\n"
-  "  component: \"/main/level.script\"\n"
+  "  component: \"/main/level/level.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -175,7 +195,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"collisionobject\"\n"
   "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"/main/level.tilemap\\\"\\n"
+  "  data: \"collision_shape: \\\"/main/level/level.tilemap\\\"\\n"
   "type: COLLISION_OBJECT_TYPE_STATIC\\n"
   "mass: 0.0\\n"
   "friction: 0.1\\n"
