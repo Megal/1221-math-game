@@ -1,6 +1,7 @@
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") then
 		if message.enter then
+			sound.play("#sound", {delay = 0, gain = 0.25, pan = 0.0, speed = 1.0})
 			go.delete(sender)
 		end
 	end
