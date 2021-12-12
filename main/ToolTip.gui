@@ -43,12 +43,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "box"
+  id: "tooltip"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  layer: ""
+  layer: "tooltip"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -59,26 +59,26 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 0.5
+  alpha: 0.0
   template_node_child: false
   size_mode: SIZE_MODE_MANUAL
 }
 nodes {
   position {
-    x: 571.0
-    y: 413.0
+    x: 666.0
+    y: 411.0
     z: 0.0
     w: 1.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: -0.96
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 2.069
+    y: 2.387
     z: 1.0
     w: 1.0
   }
@@ -113,12 +113,15 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.0
   template_node_child: false
   size_mode: SIZE_MODE_AUTO
 }
 layers {
-  name: "prompt"
+  name: "tooltip"
+}
+layers {
+  name: "background"
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

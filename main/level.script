@@ -9,6 +9,15 @@ function init(self)
 	p.z =  0.9
 	local component = "#symbol_factory"
 	factory.create(component, p)
+
+	local node = gui.get_node("tooltip")
+	local color = gui.get_color(node)
+	-- Animate the color to white
+	gui.animate(node, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_INOUTQUAD, 0.5)
+	-- Animate the outline red color component
+	gui.animate(node, "outline.x", 1, gui.EASING_INOUTQUAD, 0.5)
+	-- And move to x position 100
+	gui.animate(node, hash("position.x"), 100, gui.EASING_INOUTQUAD, 0.5)
 end
 
 function final(self)
