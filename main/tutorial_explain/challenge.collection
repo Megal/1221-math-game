@@ -40,12 +40,12 @@ instances {
   }
 }
 instances {
-  id: "equals"
-  prototype: "/main/tutorial_explain/symbols/equals.go"
+  id: "multiply"
+  prototype: "/main/tutorial_explain/symbols/multiply.go"
   position {
-    x: 192.0
+    x: 64.0
     y: 0.0
-    z: 0.9
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -60,10 +60,10 @@ instances {
   }
 }
 instances {
-  id: "multiply"
-  prototype: "/main/tutorial_explain/symbols/multiply.go"
+  id: "equals"
+  prototype: "/main/tutorial_explain/symbols/equals.go"
   position {
-    x: 64.0
+    x: 192.0
     y: 0.0
     z: 0.0
   }
