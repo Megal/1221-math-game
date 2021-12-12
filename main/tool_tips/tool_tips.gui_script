@@ -2,6 +2,9 @@ function init(self)
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
 	self.isHide = true
+
+  self.menu = gui.get_node("menu")
+  gui.set_enabled(self.menu, false)
 end
 
 function final(self)

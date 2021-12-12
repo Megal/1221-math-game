@@ -164,6 +164,9 @@ function on_message(self, message_id, message, sender)
     elseif message_id == hash("collision_response") then
         -- take action
         pprint("I collided with" .. message.other_group)
+    elseif message_id == hash("trigger_response") then
+        -- take action
+        pprint("I collided with" .. message.other_id)
     end
 
 --     -- proxy load

@@ -1,4 +1,8 @@
 script: ""
+fonts {
+  name: "main"
+  font: "/main/main.font"
+}
 textures {
   name: "compiled"
   texture: "/main/level/compiled.tilesource"
@@ -65,26 +69,26 @@ nodes {
 }
 nodes {
   position {
-    x: 666.0
-    y: 411.0
+    x: 5.0
+    y: 2.0
     z: 0.0
     w: 1.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: -0.96
+    z: 0.0
     w: 1.0
   }
   scale {
-    x: 2.069
-    y: 2.387
+    x: 3.0
+    y: 3.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 64.0
-    y: 64.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -94,28 +98,37 @@ nodes {
     z: 1.0
     w: 1.0
   }
-  type: TYPE_BOX
+  type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  texture: "compiled/number_0"
-  id: "box1"
+  text: "2x2=4"
+  font: "main"
+  id: "text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
   adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "tooltip"
   layer: ""
   inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 0.0
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_AUTO
+  text_leading: 1.0
+  text_tracking: 0.0
 }
 layers {
   name: "tooltip"

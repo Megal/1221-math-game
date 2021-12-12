@@ -46,6 +46,7 @@ embedded_components {
   "mask: \"digit\"\n"
   "mask: \"detector\"\n"
   "mask: \"carrot\"\n"
+  "mask: \"tooltip\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
