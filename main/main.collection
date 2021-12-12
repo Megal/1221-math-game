@@ -63,7 +63,7 @@ instances {
   id: "detector"
   prototype: "/main/detector/detector.go"
   position {
-    x: 478.0
+    x: 416.0
     y: 352.0
     z: 0.0
   }
@@ -143,7 +143,7 @@ collection_instances {
   id: "equation"
   collection: "/main/equation/equation.collection"
   position {
-    x: 192.0
+    x: 128.0
     y: 320.0
     z: 0.2
   }
