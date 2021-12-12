@@ -168,22 +168,6 @@ function on_message(self, message_id, message, sender)
         -- take action
         pprint("I collided with" .. message.other_id)
     end
-
---     -- proxy load
---     if message_id == hash("proxy_loaded") then
---         -- New world is loaded. Init and enable it.
---         print("PROXY LOADED IN MAIN ASTRONAUT")
---         pprint(self)
---         pprint(sender)
---         
---         msg.post(".", "release_input_focus")
--- 
---         msg.post(sender, "init")
---         msg.post(sender, "enable")
---         
---         -- give focus to character cause it does not work on init
---         
---     end
 end
 
 function check_win_condition(self)
