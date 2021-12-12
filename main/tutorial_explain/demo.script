@@ -1,0 +1,83 @@
+local speed = 196
+
+
+function init(self)
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+	msg.post("woosh", "disable")
+	self.digit_ok = false
+	self.waiting_time = 0
+	self.woosh_life = 0
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+
+	move_digit(self, dt)
+	if self.digit_ok then
+		msg.post("level", "disable_door")
+		self.woosh_life = self.woosh_life + dt
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
+
+function move_digit(self, dt)
+	if self.waiting_time > 3 then
+		local dir = vmath.vector3(0, -1, 0)
+		local player_p = go.get_position("astronaut")
+		local digit_p = go.get_position("number_2")
+
+		if player_p.y > 384 then
+			local step = speed * dt
+			go.set_position(player_p + dir * step, "astronaut")
+		end
+		if digit_p.y > 320 then
+			local step = speed * dt
+			go.set_position(digit_p + dir * step, "number_2")
+		else
+			self.digit_ok = true
+			msg.post("woosh", "enable")
+		end
+	else
+		self.waiting_time = self.waiting_time + dt
+	end
+	if self.woosh_life > 0.4 then
+		msg.post("woosh", "disable")
+	end
+end
+
+function reset(self)
+
+end

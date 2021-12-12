@@ -1,30 +1,10 @@
 name: "main"
 instances {
   id: "astronaut"
-  prototype: "/main/astronaut.go"
+  prototype: "/main/player/player.go"
   position {
-    x: 611.0
-    y: 258.0
-    z: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 4.0
-    y: 4.0
-    z: 1.0
-  }
-}
-instances {
-  id: "wall1"
-  prototype: "/main/wall.go"
-  position {
-    x: 672.0
-    y: 352.0
+    x: 405.0
+    y: 172.0
     z: 1.0
   }
   rotation {
@@ -43,15 +23,75 @@ instances {
   id: "number"
   prototype: "/main/number/number.go"
   position {
-    x: 96.0
-    y: 96.0
-    z: 2.0
+    x: 339.0
+    y: 174.0
+    z: 1.0
   }
   rotation {
     x: 0.0
-    y: -0.025007822
+    y: 0.0
     z: 0.0
-    w: 0.99968725
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wall"
+  prototype: "/main/wall/wall.go"
+  position {
+    x: 352.0
+    y: 352.0
+    z: 0.4
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "detector"
+  prototype: "/main/detector/detector.go"
+  position {
+    x: 416.0
+    y: 352.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "door"
+  prototype: "/main/door/door.go"
+  position {
+    x: 513.0
+    y: 641.0
+    z: 0.6
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -79,12 +119,52 @@ collection_instances {
     z: 1.0
   }
 }
+collection_instances {
+  id: "carrot_set"
+  collection: "/main/tutorial_explain/carrot_set.collection"
+  position {
+    x: 673.0
+    y: 544.0
+    z: 0.9
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "equation"
+  collection: "/main/equation/equation.collection"
+  position {
+    x: 128.0
+    y: 320.0
+    z: 0.2
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "level"
   data: "components {\n"
   "  id: \"level\"\n"
-  "  component: \"/main/level.tilemap\"\n"
+  "  component: \"/main/level/level.tilemap\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -99,7 +179,7 @@ embedded_instances {
   "}\n"
   "components {\n"
   "  id: \"level_script\"\n"
-  "  component: \"/main/level.script\"\n"
+  "  component: \"/main/level/level.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -115,35 +195,18 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"collisionobject\"\n"
   "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"/main/level.tilemap\\\"\\n"
+  "  data: \"collision_shape: \\\"/main/level/level.tilemap\\\"\\n"
   "type: COLLISION_OBJECT_TYPE_STATIC\\n"
   "mass: 0.0\\n"
   "friction: 0.1\\n"
   "restitution: 0.5\\n"
   "group: \\\"\\\"\\n"
   "mask: \\\"player\\\"\\n"
+  "mask: \\\"digit\\\"\\n"
   "linear_damping: 0.0\\n"
   "angular_damping: 0.0\\n"
   "locked_rotation: false\\n"
   "bullet: false\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"number_factory\"\n"
-  "  type: \"factory\"\n"
-  "  data: \"prototype: \\\"/main/number/number.go\\\"\\n"
-  "load_dynamically: false\\n"
   "\"\n"
   "  position {\n"
   "    x: 0.0\n"

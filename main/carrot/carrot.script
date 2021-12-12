@@ -1,0 +1,14 @@
+local maxX = 1280
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") then
+		if message.enter then
+			msg.post("main:/astronaut#astronaut", "increment_score")
+						
+			local p = go.get_position()
+			local pan = math.max(math.min((2.0 * p.x / maxX - 1.0), 1.0), -1.0)			
+			sound.play("#sound", {delay = 0, gain = 0.25, pan = pan, speed = 1.0})
+			go.delete(sender)
+		end
+	end
+end

@@ -1,0 +1,63 @@
+function init(self)
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+	print("INIT TUTORIAL LEVEL")
+	-- disable_carrots()
+	
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+
+	if message_id == hash("disable_door") then
+	    disable_door(self)
+    end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
+
+function disable_door(self)
+	msg.post("tutorial_door", "disable")
+end
+
+function disable_carrots(self)
+	-- msg.post("/carrot_set/carrot1#sprite", "disable")
+	-- msg.post("/carrot_set/carrot2#sprite", "disable")
+	-- msg.post("/carrot_set/carrot3#sprite", "disable")
+	-- msg.post("/carrot_set/carrot4#sprite", "disable")
+	msg.post("/carrot_set/carrot1", "disable")
+	msg.post("/carrot_set/carrot2", "disable")
+	msg.post("/carrot_set/carrot3", "disable")
+	msg.post("/carrot_set/carrot4", "disable")
+end
