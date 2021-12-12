@@ -1,7 +1,7 @@
 script: ""
 textures {
   name: "compiled"
-  texture: "/main/compiled.tilesource"
+  texture: "/main/level/compiled.tilesource"
 }
 background_color {
   x: 0.0
