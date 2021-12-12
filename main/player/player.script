@@ -190,5 +190,6 @@ end
 
 function next_level(self) 
     msg.post("loader:/loader", "next_level")
+    self.score = -1
 end
 

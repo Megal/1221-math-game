@@ -12,8 +12,15 @@ function final(self)
 	msg.post(".", "release_input_focus")
 end
 
+
 function on_message(self, message_id, message, sender)
-	if message_id == hash("reload_page") then
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "init")
+		msg.post(sender, "enable")
+		msg.post("loading:/level#level_script", "load_target", { level = self.next_level })
+	elseif message_id == hash("show_level_by_name") then
+		show_by_name(self, message.level)
+	elseif message_id == hash("reload_page") then
 		reload_page(self)
 	elseif message_id == hash("next_level") then
 		show_next(self)
@@ -64,8 +71,13 @@ end
 function show_next(self)
 	print("SHOWING NEXT")
 	if self.loaded ~= "#main_proxy" then
-		show_by_name(self, "#main_proxy")
+		show_with_loading(self, "#main_proxy")
 	else
-		show_by_name(self, "#main_proxy_level_2")
+		show_with_loading(self, "#main_proxy_level_2")
 	end
+end
+
+function show_with_loading(self, next_level)
+	show_by_name(self, "#loading")
+	self.next_level = next_level
 end

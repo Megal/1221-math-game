@@ -1,0 +1,24 @@
+local load_time = 3
+
+function init(self)
+	self.timer = 100000
+	print(msg.url())
+end
+
+function update(self, dt)
+	self.timer = self.timer - dt
+
+	evaluate_timer(self)
+end
+	
+function on_message(self, message_id, message, sender)
+	if message_id == hash("load_target") then
+		self.level = message.level
+		self.timer = load_time
+	end
+end
+
+function evaluate_timer(self)
+	if self.timer > 0.0 then return end
+	msg.post("loader:/loader", "show_level_by_name", { level = self.level })
+end
