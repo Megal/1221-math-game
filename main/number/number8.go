@@ -1,6 +1,6 @@
 components {
-  id: "wall"
-  component: "/main/wall/wall.script"
+  id: "number-fixed"
+  component: "/main/number/number-fixed.script"
   position {
     x: 0.0
     y: 0.0
@@ -14,10 +14,10 @@ components {
   }
 }
 embedded_components {
-  id: "sprite"
+  id: "number_sprite"
   type: "sprite"
   data: "tile_set: \"/main/level/compiled.tilesource\"\n"
-  "default_animation: \"stone\"\n"
+  "default_animation: \"number_8\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
@@ -38,12 +38,13 @@ embedded_components {
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
   "type: COLLISION_OBJECT_TYPE_DYNAMIC\n"
-  "mass: 1.0\n"
-  "friction: 0.1\n"
+  "mass: 0.5\n"
+  "friction: 0.5\n"
   "restitution: 0.5\n"
-  "group: \"wall\"\n"
+  "group: \"digit\"\n"
   "mask: \"player\"\n"
-  "mask: \"digit\"\n"
+  "mask: \"wall\"\n"
+  "mask: \"detector\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
@@ -61,12 +62,12 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 31.0\n"
-  "  data: 31.0\n"
-  "  data: 0.5\n"
+  "  data: 24.0\n"
+  "  data: 24.0\n"
+  "  data: 32.0\n"
   "}\n"
-  "linear_damping: 0.0\n"
-  "angular_damping: 0.0\n"
+  "linear_damping: 0.99\n"
+  "angular_damping: 0.98\n"
   "locked_rotation: false\n"
   "bullet: false\n"
   ""

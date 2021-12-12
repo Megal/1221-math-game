@@ -7,6 +7,7 @@ local time_min = 0.05
 local time_max = 0.2
 local lateral_speed_compensation_time = 0.2
 local color_green = vmath.vector4(0, 1, 0, 1)
+go.property("win_score", 4)
 
 debugger = require('libs.debugger')
 debugger.start()
@@ -183,7 +184,7 @@ function on_message(self, message_id, message, sender)
 end
 
 function check_win_condition(self)
-    if self.score == 4 then 
+    if self.score == self.win_score then 
         next_level(self)
     end
 end
