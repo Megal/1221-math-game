@@ -2,6 +2,9 @@ function init(self)
 	print("LOADING MAIN")
 	msg.post(".", "acquire_input_focus")
 	msg.post("#main_proxy", "load")
+	msg.post("/menu", "disable")
+	self.is_showing_tutorial = false
+	self.is_showing_main = true
 	-- msg.post("#tutorial_proxy", "load")
 end
 
@@ -13,11 +16,11 @@ function on_message(self, message_id, message, sender)
 	-- Proxy loading
 	if message_id  == hash("show_tutorial") then
 		-- msg.post(".", "acquire_input_focus")
-		show_tutorial()
+		show_tutorial(self)
 	end
 	if message_id  == hash("show_main") then
 		-- msg.post(".", "acquire_input_focus")
-		show_main()
+		show_main(self)
 	end
 
 	if message_id == hash("proxy_loaded") then
@@ -33,12 +36,25 @@ end
 
 function show_tutorial(self)
 	print("SHOWING TUTORIAL")
-	msg.post("#tutorial_proxy", "load")
-	msg.post("#main_proxy", "unload")
+	if not self.is_showing_tutorial then
+		msg.post("#tutorial_proxy", "load")
+		self.is_showing_tutorial = true
+	end
+	if self.is_showing_main then
+		msg.post("#main_proxy", "unload")
+		self.is_showing_main = false
+	end
 end
 
 function show_main(self)
 	print("SHOWING MAIN")
-	msg.post("#main_proxy", "load")
-	msg.post("#tutorial_proxy", "unload")
+	if not self.is_showing_main then
+		msg.post("#main_proxy", "load")
+		self.is_showing_main = true
+	end
+	if self.is_showing_tutorial then
+		msg.post("#tutorial_proxy", "unload")
+		self.is_showing_tutorial = false
+	end
+
 end
