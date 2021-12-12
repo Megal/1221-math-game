@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "number_sprite"
   type: "sprite"
-  data: "tile_set: \"/main/compiled.tilesource\"\n"
+  data: "tile_set: \"/main/level/compiled.tilesource\"\n"
   "default_animation: \"number_4\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"

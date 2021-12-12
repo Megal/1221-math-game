@@ -16,8 +16,8 @@ components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "tile_set: \"/main/compiled.tilesource\"\n"
-  "default_animation: \"anim\"\n"
+  data: "tile_set: \"/main/level/compiled.tilesource\"\n"
+  "default_animation: \"equation_bg\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
