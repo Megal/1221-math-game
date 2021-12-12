@@ -4,6 +4,9 @@ function init(self)
 	msg.post("#main_proxy", "load")
 	self.loaded = "#main_proxy"
 	
+	msg.post("/menu", "disable")
+	self.is_showing_tutorial = false
+	self.is_showing_main = true
 	-- msg.post("#tutorial_proxy", "load")
 	sound.play("go#sound", {delay = 1, gain = 0.5, pan = 0.0, speed = 1.0})
 end
