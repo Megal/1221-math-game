@@ -1,4 +1,4 @@
-local load_time = 3
+local load_time = 2.5
 
 function init(self)
 	self.timer = 100000

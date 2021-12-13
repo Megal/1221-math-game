@@ -132,7 +132,7 @@ function on_input(self, action_id, action)
     
     -- if self.move_remains > 1e-9 then return end
     -- self.move_remains = tile_size
-    if self.time_remains > time_min then return end
+    if self.time_remains > time_min then return false end
     self.time_remains = time_max
 
     if action_id == hash("front") then
@@ -143,7 +143,12 @@ function on_input(self, action_id, action)
         self.dir = vmath.vector3(-1, 0, 0)
     elseif action_id == hash("right") then
         self.dir = vmath.vector3(1, 0, 0)
+    else
+        return false
     end
+
+    -- consume action that was handled
+    return true
 end
 
 function nearest_tile_center(position)

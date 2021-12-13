@@ -1,55 +1,10 @@
 go.property("astonaut_speed", 196)
 
 function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
 	print("INIT TUTORIAL ASTRO")
 	msg.post(".", "acquire_input_focus")
 end
 
 function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-	msg.post(".", "release_input_focus")
-	
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
-end
-
-function on_input(self, action_id, action)
-	if action_id == hash("main") then
-		if action.pressed then
-			-- start moving left
-			print("LOADING TUTORIAL")
-			msg.post("loader:/loader", "show_main")
-
-		elseif action.released then
-			-- stop moving left
-		end
-	end
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
+	msg.post(".", "release_input_focus")	
 end

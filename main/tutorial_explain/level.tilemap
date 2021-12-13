@@ -1683,6 +1683,13 @@ layers {
     h_flip: 0
     v_flip: 0
   }
+  cell {
+    x: 21
+    y: 12
+    tile: 13
+    h_flip: 0
+    v_flip: 0
+  }
 }
 layers {
   id: "walls"

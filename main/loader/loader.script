@@ -1,23 +1,43 @@
+local sound_gain = 0.45
+
 function init(self)
 	print("LOADING MAIN")
 	msg.post(".", "acquire_input_focus")
 	msg.post("#main_proxy", "load")
 	self.loaded = "#main_proxy"
+	self.muted = false
 	
 	msg.post("/menu", "disable")
-	sound.play("go#sound", {delay = 1, gain = 0.5, pan = 0.0, speed = 1.0})
+	sound.play("go#sound", {delay = 1, gain = sound_gain, pan = 0.0, speed = 1.0})
 end
 
 function final(self)
 	msg.post(".", "release_input_focus")
 end
 
+function on_input(self, action_id, action)
+	if action_id == hash("main") and action.released then
+		show_main(self)
+	elseif action_id == hash("mute") and action.released then
+		self.muted = not self.muted
+		sound.set_group_gain("master", self.muted and 0.0 or sound_gain)
+	elseif action_id == hash("debug") and action.released then
+		msg.post("@system:", "toggle_physics_debug")
+	elseif action_id == hash("tutorial") and action.released then
+		show_tutorial(self)
+	else 
+		return false
+	end
+
+	return true
+end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("proxy_loaded") then
+	if message_id == hash("proxy_loaded") and self.next_level then
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
 		msg.post("loading:/level#level_script", "load_target", { level = self.next_level })
+		self.next_level = nil
 	elseif message_id == hash("show_level_by_name") then
 		show_by_name(self, message.level)
 	elseif message_id == hash("reload_page") then
