@@ -5,14 +5,24 @@ main_collection = /main/loader/loader.collectionc
 shared_state = 1
 
 [project]
-title = Heroes of Math'n'Matics
+title = 2x2 Game
+version = 0.1
+publisher = megal.dev
+developer = megal.dev
 
 [display]
 width = 1280
 height = 768
+update_frequency = 60
+high_dpi = 1
 
 [physics]
 gravity_y = 0.0
 debug = 0
 scale = 0.1
+
+[html5]
+show_made_with_defold = 0
+show_fullscreen_button = 0
+show_console_banner = 0
 
