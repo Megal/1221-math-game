@@ -48,26 +48,6 @@ instances {
   }
 }
 instances {
-  id: "detector"
-  prototype: "/main/detector/detector.go"
-  position {
-    x: 416.0
-    y: 352.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "door"
   prototype: "/main/door/door.go"
   position {

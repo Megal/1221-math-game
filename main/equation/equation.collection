@@ -82,9 +82,30 @@ instances {
 instances {
   id: "filling_spot"
   prototype: "/main/equation/filling_spot.go"
+  children: "detector"
   position {
     x: 256.0
     y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "detector"
+  prototype: "/main/detector/detector.go"
+  position {
+    x: 32.0
+    y: 32.0
     z: 0.0
   }
   rotation {
