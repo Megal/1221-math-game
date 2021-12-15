@@ -7,6 +7,7 @@ local time_min = 0.05
 local time_max = 0.2
 local lateral_speed_compensation_time = 0.2
 local color_green = vmath.vector4(0, 1, 0, 1)
+local win_delay = 1.5
 go.property("win_score", 4)
 
 debugger = require('libs.debugger')
@@ -19,6 +20,7 @@ function init(self)
     self.current_anim = nil
     self.move_remains = 0
     self.time_remains = 0
+    self.win_timer = 1000000
     self.score = 0
 end
 
@@ -36,6 +38,7 @@ function update(self, dt)
     local step = math.min(speed * dt, self.move_remains)
     self.move_remains = self.move_remains - step
     self.time_remains = self.time_remains - dt
+    self.win_timer = self.win_timer - dt
         
     -- go.set_position(p + self.dir * step)
     
@@ -114,22 +117,6 @@ function update(self, dt)
 end
 
 function on_input(self, action_id, action)
-    if action_id == hash("debug") and action.released then
-        msg.post("@system:", "toggle_physics_debug")
-    end
-
-    if action_id == hash("tutorial") then
-        if action.pressed then
-            -- start moving left
-            print("LOADING TUTORIAL")
-            msg.post(".", "release_input_focus")
-            msg.post("loader:/loader", "show_tutorial")
-
-        elseif action.released then
-            -- stop moving left
-        end
-    end
-    
     -- if self.move_remains > 1e-9 then return end
     -- self.move_remains = tile_size
     if self.time_remains > time_min then return false end
@@ -177,7 +164,10 @@ end
 
 function check_win_condition(self)
     if self.score == self.win_score then 
-        next_level(self)
+        self.win_timer = math.min(self.win_timer, win_delay)
+        if self.win_timer <= 0.0 then
+            next_level(self)
+        end
     end
 end
 
