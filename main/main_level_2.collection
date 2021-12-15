@@ -37,7 +37,7 @@ instances {
     id: "number-fixed"
     properties {
       id: "number"
-      value: "3.0"
+      value: "2.0"
       type: PROPERTY_TYPE_NUMBER
     }
   }

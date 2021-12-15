@@ -1,7 +1,7 @@
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "tile_set: \"/main/number_white/number_white.atlas\"\n"
+  data: "tile_set: \"/main/tutorial_explain/tutorial_numbers/number_white.atlas\"\n"
   "default_animation: \"number-white-2\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"

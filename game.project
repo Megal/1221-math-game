@@ -6,7 +6,7 @@ shared_state = 1
 
 [project]
 title = 2x2 Game
-version = 0.1
+version = 0.4
 publisher = megal.dev
 developer = megal.dev
 
