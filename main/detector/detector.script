@@ -1,11 +1,18 @@
+go.property("correct_number", -1)
+
 function on_message(self, message_id, message, sender)
-	if message_id == hash("trigger_response") then
+	if message_id == hash("trigger_response") and message.other_group == hash("digit") then
 		if message.enter then
-			go.delete(sender)
-		end
-	elseif message_id == hash("collision_response") then
-		if message.enter then
-			go.delete(sender)
+			local other_url = msg.url(nil, message.other_id, "number-fixed")
+			local number_object = go.get(other_url, "number")
+			if number_object == self.correct_number then
+				msg.post("/door", "open")
+			else 
+				print("Wrong number in equation: " ..  number_object .. " expected " .. self.correct_number)
+				msg.post("/door", "close")
+			end
+		else
+			msg.post("/door", "close")
 		end
 	end
 end
