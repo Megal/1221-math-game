@@ -1,17 +1,24 @@
+go.property("number", 0)
+
 function init(self)
 	-- корректирующий вектор
 	self.correction = vmath.vector3()
-	print(msg.url())
+	update_sprite(self, self.number)
 end
+
 
 function update(self, dt)
 	-- корректирующий вектор
 	self.correction = vmath.vector3()
 end
 
+function update_sprite(self, number)
+	msg.post("#number_sprite", "play_animation", { id = hash("number_" .. number) })				
+end
+
 function on_message(self, message_id, message, sender)
 	if message_id == hash("set_number") then
-		msg.post("#number_sprite", "play_animation", { id = hash("number_" .. message.number) })				
+		update_sprite(self, message.number)
 	elseif message_id == hash("trigger_response") then
 		if message.enter then
 			msg.post("door", "open")

@@ -29,7 +29,7 @@ instances {
 }
 instances {
   id: "number"
-  prototype: "/main/number/number8.go"
+  prototype: "/main/number/number.go"
   position {
     x: 339.0
     y: 174.0
@@ -40,6 +40,14 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "number-fixed"
+    properties {
+      id: "number"
+      value: "8.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
   }
   scale3 {
     x: 1.0
