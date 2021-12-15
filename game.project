@@ -6,7 +6,7 @@ shared_state = 1
 
 [project]
 title = 2x2 Game
-version = 0.4
+version = 0.5
 publisher = megal.dev
 developer = megal.dev
 dependencies#0 = https://github.com/britzl/defold-input/archive/master.zip
